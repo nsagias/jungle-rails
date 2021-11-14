@@ -3,6 +3,11 @@
   <header class="page-header">
     <h1>My Cart</h1>
   </header>
+<% if enhanced_cart.length <1 %>
+  <div class="alert alert-info" role="alert" >
+  Your Cart Is Empty   <a href="/" class="alert-link">CLICK HERE</a>  to return to our products page.
+</div>
+<% else %>
 
   <div class="panel panel-default items">
     <table class="table table-bordered">
@@ -48,5 +53,5 @@
       <% end %>
     </div>
   </div>
-
+<% end %>
 </section>
