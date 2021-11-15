@@ -2,6 +2,16 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @guess = enhanced_cart.each do |entry|
+      product = entry[:product]
+      quantity = entry[:quantity]
+      order.line_items.new(
+        product: product,
+        quantity: quantity,
+        item_price: product.price,
+        total_price: product.price * quantity
+      )
+    end
   end
 
   def create
