@@ -22,6 +22,21 @@ RSpec.describe Product, type: :model do
     category = Category.create(name: "test")
     product = Product.new(name: "bob" , quantity: nil, price: 10, category: category)
     expect(product).to_not be_valid
+    product.save
+    byebug
   end
+
+  it "is not valid without price " do
+    category = Category.create(name: "test")
+    product = Product.new(name: "bob" , quantity: 1, category: category)
+    expect(product).to_not be_valid
+  end
+
+  it "is not valid without category " do
+    category = Category.create(name: "test")
+    product = Product.new(name: "bob" , quantity: 1, price: 10, category: nil)
+    expect(product).to_not be_valid
+  end
+
 
 end
