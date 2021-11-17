@@ -18,5 +18,10 @@ RSpec.describe Product, type: :model do
     # ["Name can't be blank"]
     # (byebug) 
   end
+  it "is not valid without a quantity" do
+    category = Category.create(name: "test")
+    product = Product.new(name: "bob" , quantity: nil, price: 10, category: category)
+    expect(product).to_not be_valid
+  end
 
 end
