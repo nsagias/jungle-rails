@@ -32,6 +32,10 @@ RSpec.describe Product, type: :model do
     category = Category.create(name: "test")
     product = Product.new(name: "bob" , quantity: 1, category: category)
     expect(product).to_not be_valid
+    # product.save
+    # byebug
+    # (byebug) product.errors.full_messages
+    # ["Price cents is not a number", "Price is not a number", "Price can't be blank"]
   end
 
   it "is not valid without category " do
