@@ -7,4 +7,26 @@ RSpec.describe User, type: :model do
     user = User.new(fname: "bob", lname: "uncle", email:"test@test.com", password: "password", password_confirmation:"password")
     expect(user).to be_valid
   end
+  it "is not valid without fname" do
+    user = User.new(fname: nil, lname: "uncle", email:"test@test.com", password: "password", password_confirmation:"password")
+    expect(user).to_not be_valid
+  end
+  
+  it "is not valid without lname" do
+    user = User.new(fname: "bob", lname: nil, email:"test@test.com", password: "password", password_confirmation:"password")
+    expect(user).to_not be_valid
+  end
+  it "is not valid without email" do
+    user = User.new(fname: "bob", lname: "uncle", email: nil, password: "password", password_confirmation:"password")
+    expect(user).to_not be_valid
+  end
+  it "is not valid without password" do
+    user = User.new(fname: "bob", lname: "uncle", email: "test@test.com", password: nil, password_confirmation:"password")
+    expect(user).to_not be_valid
+  end
+  it "is not valid without password_confirmation" do
+    user = User.new(fname: "bob", lname: "uncle", email: "test@test.com", password: "password", password_confirmation: nil)
+    expect(user).to_not be_valid
+  end
+  
 end
