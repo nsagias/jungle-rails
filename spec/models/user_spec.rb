@@ -37,5 +37,14 @@ RSpec.describe User, type: :model do
     user = User.new(fname: "bob", lname: "uncle", email: "TEST@TEST.com", password: "password", password_confirmation: "1134")
     expect(user).to_not be_valid
   end
+
+  it "is not valid if password length is less than 3 chars" do
+    user = User.new(fname: "bob", lname: "uncle", email:"test@test.com", password: "pa", password_confirmation:"password")
+    expect(user).to_not be_valid
+  end
+  it "is not valid if password_confirmation length is less than 3 chars" do
+    user = User.new(fname: "bob", lname: "uncle", email:"test@test.com", password: "password", password_confirmation:"pa")
+    expect(user).to_not be_valid
+  end
   
 end
