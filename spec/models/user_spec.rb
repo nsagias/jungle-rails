@@ -61,12 +61,12 @@ RSpec.describe User, type: :model do
       found_user = User.authenticate_with_credentials("test@test.com","password" )
       expect(found_user).to be_nil
     end
-    it "returns returns the user even if there are traling spaces" do
-      found_user = User.authenticate_with_credentials("test@test.com","password" )
+    it "returns returns the user even if there are trailing spaces" do
+      found_user = User.authenticate_with_credentials("test@test.com ","password" )
       expect(found_user).to be_nil
     end
     it "returns returns the user with the wrong case" do
-      found_user = User.authenticate_with_credentials("test@test.com","password" )
+      found_user = User.authenticate_with_credentials("tesT@test.COM","password" )
       expect(found_user).to be_nil
     end
   end
