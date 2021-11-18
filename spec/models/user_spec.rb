@@ -28,5 +28,14 @@ RSpec.describe User, type: :model do
     user = User.new(fname: "bob", lname: "uncle", email: "test@test.com", password: "password", password_confirmation: nil)
     expect(user).to_not be_valid
   end
+  it "is not valid if password and password confirmation do not match" do
+    user = User.new(fname: "bob", lname: "uncle", email: "test@test.com", password: "password", password_confirmation: "1134")
+    expect(user).to_not be_valid
+  end
+  it "is not valid if email is already in database" do
+    User.create(fname: "bob", lname: "uncle", email:"test@test.COM", password: "password", password_confirmation:"password")
+    user = User.new(fname: "bob", lname: "uncle", email: "TEST@TEST.com", password: "password", password_confirmation: "1134")
+    expect(user).to_not be_valid
+  end
   
 end
