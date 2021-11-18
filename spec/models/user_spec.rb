@@ -52,6 +52,23 @@ RSpec.describe User, type: :model do
 
   describe '.authenticate_with_credentials' do
     # examples for this class method here
+    it "returns the user if the user exists" do
+      User.create(fname: "bob", lname: "uncle", email:"test@test.com", password: "password", password_confirmation:"password")
+      found_user = User.authenticate_with_credentials("test@test.com","password" )
+      expect(found_user).to_not be_nil
+    end
+    it "returns nill if the user does not exists" do
+      found_user = User.authenticate_with_credentials("test@test.com","password" )
+      expect(found_user).to be_nil
+    end
+    it "returns returns the user even if there are traling spaces" do
+      found_user = User.authenticate_with_credentials("test@test.com","password" )
+      expect(found_user).to be_nil
+    end
+    it "returns returns the user with the wrong case" do
+      found_user = User.authenticate_with_credentials("test@test.com","password" )
+      expect(found_user).to be_nil
+    end
   end
 
 
