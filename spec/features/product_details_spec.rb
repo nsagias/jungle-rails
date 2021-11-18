@@ -20,6 +20,8 @@ RSpec.feature "Visitor navigates producs page", type: :feature, js: true do
     # ACT
     visit "/products"
 
+    find(".btn-default", match: :first).click
+
     @category.products.create!(
       name:  Faker::Hipster.sentence(3),
       description: Faker::Hipster.paragraph(4),
@@ -30,7 +32,7 @@ RSpec.feature "Visitor navigates producs page", type: :feature, js: true do
 
     # DEBUG / VERIFY
     # save_screenshot
-    expect(page).to have_css 'article.product', count: 10 
+    expect(page).to have_css '.product-detail'
   end
 
 end
