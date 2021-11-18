@@ -18,7 +18,10 @@ RSpec.feature "Visitor navigates to Add to cart", type: :feature, js: true do
   scenario "They see all products" do
     # ACT
     visit root_path
-    click_on('Add')
+    # # click_on('Add').first
+    # # click_button('Add')
+    # find(name: 'Add', match: :first).click
+    find(".btn-primary", match: :first).click
 
     @category.products.create!(
       name:  Faker::Hipster.sentence(3),
