@@ -34,6 +34,6 @@ RSpec.feature "Visitor navigates to Add to cart", type: :feature, js: true do
 
     # VERIFY
     # "My Cart (1)"
-    # expect(page).to have_css 'article.product', count: 10
+    expect(page).to have_content "My Cart (1)"
   end
 end
